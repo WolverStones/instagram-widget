@@ -67,13 +67,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 const link = document.createElement('a');
                 link.href = post.permalink;
                 link.target = '_blank';
+                link.style = "display: block; position: relative; width: 100%; height: 100%;";
 
                 if (post.media_type === 'VIDEO') {
                     const video = document.createElement('video');
-                    Object.assign(video, { src: post.media_url, width: "100%", height: "100%", muted: true, loop: true, autoplay: true, style: "object-fit: cover; pointer-events: none;" });
+                    Object.assign(video, { src: post.media_url, width: "100%", height: "100%", muted: true, loop: true, autoplay: true, style: "object-fit: cover; pointer-events: none; position: absolute; top: 0; left: 0; z-index: -1;" });
 
                     const playIcon = document.createElement('div');
-                    Object.assign(playIcon.style, { position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', background: 'rgba(0, 0, 0, 0.5)', color: 'white', fontSize: '40px', padding: '10px 15px', borderRadius: '50%', cursor: 'pointer' });
+                    Object.assign(playIcon.style, { position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', background: 'rgba(0, 0, 0, 0.5)', color: 'white', fontSize: '40px', padding: '10px 15px', borderRadius: '50%', cursor: 'pointer', zIndex: '2' });
                     playIcon.textContent = '▶';
 
                     link.append(video, playIcon);
