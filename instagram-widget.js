@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!post.media_url) continue;
 
                 const postElement = document.createElement('div');
-                postElement.style = "position: relative; overflow: hidden; border-radius: 8px;";
+                postElement.style = "position: relative; overflow: hidden; border-radius: 8px; width: 100%; height: auto;";
 
                 const link = document.createElement('a');
                 link.href = post.permalink;
@@ -70,18 +70,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.style = "display: block; position: relative; width: 100%; height: 100%;";
 
                 if (post.media_type === 'VIDEO') {
+                    const videoContainer = document.createElement('div');
+                    videoContainer.style = "position: relative; width: 100%; height: 0; padding-bottom: 56.25%; overflow: hidden;";
+
                     const video = document.createElement('video');
-                    Object.assign(video, { src: post.media_url, width: "100%", height: "100%", muted: true, loop: true, autoplay: true, style: "object-fit: cover; pointer-events: none; position: absolute; top: 0; left: 0; z-index: -1;" });
+                    Object.assign(video, { src: post.media_url, muted: true, loop: true, autoplay: true, style: "position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none;" });
 
                     const playIcon = document.createElement('div');
                     Object.assign(playIcon.style, { position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', background: 'rgba(0, 0, 0, 0.5)', color: 'white', fontSize: '40px', padding: '10px 15px', borderRadius: '50%', cursor: 'pointer', zIndex: '2' });
                     playIcon.textContent = '▶';
 
-                    link.append(video, playIcon);
+                    videoContainer.append(video, playIcon);
+                    link.append(videoContainer);
                     postElement.append(link);
                 } else {
                     const img = document.createElement('img');
-                    Object.assign(img, { src: post.media_url, alt: "Instagram Post", style: "width: 100%; height: 100%; object-fit: cover;" });
+                    Object.assign(img, { src: post.media_url, alt: "Instagram Post", style: "width: 100%; height: auto; object-fit: cover;" });
                     link.append(img);
                     postElement.append(link);
                 }
