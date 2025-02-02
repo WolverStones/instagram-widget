@@ -23,7 +23,7 @@ from flask_cors import CORS
 from bs4 import BeautifulSoup
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app, resources={r"/instagram/*": {"origins": "*"}})
 
 INSTAGRAM_USERNAME = "nartdanceschool"
 CACHE_FILE = "instagram_cache.json"
@@ -135,7 +135,7 @@ def update_cache():
     print("✅ Cache updated.")
 
 
-@app.route("/feed", methods=["GET"])
+@app.route("/instagram/feed", methods=["GET"])
 def get_instagram_data():
     """Returns cached profile data and fetches posts dynamically based on the `limit` URL parameter."""
     limit = request.args.get("limit", default=4, type=int)
@@ -179,4 +179,4 @@ def get_instagram_data():
 
 if __name__ == "__main__":
     update_cache()
-    app.run(debug=True, port=2000)
+    app.run(host="0.0.0.0", debug=True, port=3019)

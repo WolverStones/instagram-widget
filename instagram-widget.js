@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
    const loadInstagramData = async () => {
       try {
-         const response = await fetch('http://localhost:2000/feed?limits=4');
+         const response = await fetch('https://node.agonia.cz/instagram/feed?limit=4');
          if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
          const data = await response.json();
 
