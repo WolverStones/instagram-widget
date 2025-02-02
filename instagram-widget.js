@@ -21,17 +21,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!container) return;
 
     container.innerHTML = `
-        <div id="profile-container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 20px; background: white; border-radius: 15px; box-shadow: 0px 4px 12px rgba(0,0,0,0.1); max-width: 1000px; margin: auto;">
-            <div style="display: flex; align-items: center; flex: 1 1 250px;">
+        <div id="profile-container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; text-align: center; padding: 20px; background: white; border-radius: 15px; box-shadow: 0px 4px 12px rgba(0,0,0,0.1); max-width: 1000px; margin: auto;">
+            <div style="display: flex; flex-direction: column; align-items: center; flex: 1 1 100%;">
                 <div style="width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7); padding: 2px; display: flex; align-items: center; justify-content: center;">
                     <img src="https://i.imgur.com/IZZQHpn.jpeg" alt="Profile Picture" style="width: 90px; height: 90px; border-radius: 50%; background: white; padding: 3px;">
                 </div>
-                <div style="margin-left: 15px;">
-                    <h1 style="font-weight: bold; font-size: 20px; margin: 0;">Nart dance school</h1>
-                    <p style="font-size: 16px; color: gray; margin: 0;">@nartdanceschool</p>
-                </div>
+                <h1 style="font-weight: bold; font-size: 22px; margin: 10px 0 5px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80%;">Nart dance school</h1>
+                <p style="font-size: 16px; color: gray; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 80%;">@nartdanceschool</p>
             </div>
-            <div style="display: flex; flex: 1 1 250px; gap: 15px; text-align: center; font-size: 16px; justify-content: flex-end;">
+            <div style="display: flex; justify-content: center; gap: 20px; text-align: center; font-size: 16px; flex: 1 1 100%; margin-top: 10px;">
                 <div>
                     <p id="posts" style="margin: 0; font-weight: bold;">0</p><span style="font-size: 14px; color: gray;">Příspěvky</span>
                 </div>
