@@ -31,6 +31,17 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p style="font-size: 18px; color: gray; margin: 0;">@nartdanceschool</p>
                 </div>
             </div>
+            <div style="display: flex; gap: 35px; text-align: center; font-size: 20px;">
+                <div>
+                    <p id="posts" style="margin: 0; font-weight: bold;">0</p><span style="font-size: 16px; color: gray;">Příspěvky</span>
+                </div>
+                <div>
+                    <p id="followers" style="margin: 0; font-weight: bold;">0</p><span style="font-size: 16px; color: gray;">Sledující</span>
+                </div>
+                <div>
+                    <p id="following" style="margin: 0; font-weight: bold;">0</p><span style="font-size: 16px; color: gray;">Sleduji</span>
+                </div>
+            </div>
         </div>
         <div id="feed" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; padding: 15px; max-width: 1000px; margin: auto;"></div>
     `;
@@ -40,6 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
          const response = await fetch('https://node.agonia.cz/instagram/feed?limit=4');
          if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
          const data = await response.json();
+
+         // ✅ Aktualizace počtu příspěvků, sledujících a sleduji
+         document.getElementById('posts').textContent = data.profile.media_count || 0;
+         document.getElementById('followers').textContent = data.profile.followers || 0;
+         document.getElementById('following').textContent = data.profile.following || 0;
 
          document.getElementById('feed').innerHTML = '';
 
